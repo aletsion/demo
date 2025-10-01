@@ -2,23 +2,50 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Mini Web Interactive Demo</title>
-    <!-- Liên kết file CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkBio - Portfolio Mini</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://img.icons8.com/color/48/000000/user-male-circle.png">
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>Chào mừng bạn!</h1>
+    <!-- Particle background -->
+    <div id="particles-js"></div>
 
-    <div class="input-container">
-        <input type="text" id="nameInput" placeholder="Nhập tên của bạn">
-        <input type="color" id="colorInput" value="#ff6a00">
-        <button onclick="showMessage()">Gửi</button>
+    <!-- Container -->
+    <div class="container glass">
+        <!-- Profile -->
+        <div class="profile">
+            <img src="https://img.icons8.com/color/150/000000/user-male-circle.png" alt="Avatar" class="avatar">
+            <h1 class="name">Họ Tên Của Bạn</h1>
+            <p class="bio">Web Developer | Designer | Content Creator</p>
+            <button id="copyLink">Copy Profile Link</button>
+            <button id="themeToggle">🌙 Dark/Light</button>
+        </div>
+
+        <!-- About Section -->
+        <div class="about fadeIn">
+            <h2>About Me</h2>
+            <p>Tôi là lập trình viên fullstack với kinh nghiệm phát triển web và thiết kế UI/UX. Tôi thích tạo ra các trải nghiệm người dùng mượt mà và hiện đại.</p>
+        </div>
+
+        <!-- Links Section -->
+        <div class="links fadeIn">
+            <a href="https://github.com/USERNAME" target="_blank" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.instagram.com/USERNAME" target="_blank" class="link-btn"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://t.me/USERNAME" target="_blank" class="link-btn"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:youremail@example.com" class="link-btn"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer fadeIn">
+            © 2025 Your Name
+        </div>
     </div>
 
-    <div id="message"></div>
-    <div id="clock"></div>
-
-    <!-- Liên kết file JS -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
