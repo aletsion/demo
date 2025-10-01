@@ -1,77 +1,73 @@
-/* Body & Background */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+/* Reset & Body */
+* {margin:0;padding:0;box-sizing:border-box;}
+body, html {height:100%; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+
+/* Particle background */
+#particles-js {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%; z-index:-1;
+}
+
+/* Container */
+.container {
+    position: relative;
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    text-align: center;
     color: #fff;
-    overflow-x: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-h1 {
-    margin-top: 50px;
-    font-size: 3em;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    animation: fadeInDown 1s ease-out;
-}
-
-/* Input & Button */
-.input-container {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-input[type="text"], input[type="color"] {
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
+/* Avatar */
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid #fff;
     margin-bottom: 15px;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
 }
 
+.avatar:hover {transform: scale(1.1) rotate(5deg);}
+
+/* Name & Bio */
+.name {font-size: 28px; font-weight: bold;}
+.bio {font-size: 16px; color:#ddd; margin-bottom:20px;}
+
+/* Buttons */
 button {
-    padding: 12px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #ff6a00, #ee0979);
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin:5px;
+    padding:10px 20px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    background: linear-gradient(45deg,#ff6a00,#ee0979);
+    color:#fff;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
+button:hover {transform: translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.4);}
 
-#message {
-    margin-top: 25px;
-    padding: 15px 25px;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: rgba(0,0,0,0.3);
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.5s, transform 0.5s;
-}
+/* Sections */
+.about, .links, .footer {margin-top:30px;}
+.about h2 {font-size:22px; margin-bottom:10px;}
+.about p {font-size:15px; color:#eee; line-height:1.5;}
 
-#clock {
-    margin-top: 40px;
-    font-size: 24px;
-    font-weight: bold;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-}
+/* Links */
+.links {display:flex; flex-direction:column; gap:12px; align-items:center;}
+.link-btn {display:flex; align-items:center; gap:10px; text-decoration:none; padding:10px 20px; border-radius:12px; background: linear-gradient(45deg,#36d1dc,#5b86e5); color:#fff; font-weight:bold; transition: transform 0.2s, box-shadow 0.2s;}
+.link-btn:hover {transform: translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.4);}
 
-@keyframes fadeInDown {
-    from {opacity:0; transform: translateY(-30px);}
-    to {opacity:1; transform: translateY(0);}
-}
+/* Footer */
+.footer {font-size:14px; color:#ccc; margin-top:30px;}
+
+/* Animations */
+@keyframes fadeIn {from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);}}
+.fadeIn {animation: fadeIn 1s ease forwards;}
+@keyframes pulse {0%,100%{transform: scale(1);}50%{transform: scale(1.05);}}
