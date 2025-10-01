@@ -1,7 +1,7 @@
-// Particle.js config
+// Particles.js config
 particlesJS("particles-js", {
     "particles": {
-        "number": {"value":60},
+        "number": {"value":70},
         "color": {"value":"#ffffff"},
         "shape":{"type":"circle"},
         "opacity":{"value":0.5},
@@ -29,4 +29,12 @@ document.getElementById("copyLink").addEventListener("click",()=>{
     navigator.clipboard.writeText(window.location.href)
         .then(()=>alert("Link profile đã được copy!"))
         .catch(()=>alert("Copy thất bại!"));
+});
+
+// Smooth scroll for anchors
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
 });
