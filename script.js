@@ -24,3 +24,30 @@ const revealOnScroll = () => {
 };
 window.addEventListener('scroll',revealOnScroll);
 revealOnScroll();
+
+// Animated gradient background
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+let gradientPos = 0;
+function animateGradient(){
+    gradientPos += 0.5;
+    if(gradientPos>width) gradientPos=0;
+    const gradient = ctx.createLinearGradient(0,0,width,height);
+    gradient.addColorStop(0,"#36d1dc");
+    gradient.addColorStop(0.5,"#5b86e5");
+    gradient.addColorStop(1,"#36d1dc");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,0,width,height);
+
+    requestAnimationFrame(animateGradient);
+}
+animateGradient();
+
+// Resize
+window.addEventListener('resize',()=>{
+    width=canvas.width=window.innerWidth;
+    height=canvas.height=window.innerHeight;
+});
