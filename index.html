@@ -3,85 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Mini Web Interactive Demo</title>
-    <style>
-        /* Body & Background */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        h1 {
-            margin-top: 50px;
-            font-size: 3em;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        /* Input & Button */
-        .input-container {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        input[type="text"], input[type="color"] {
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        button {
-            padding: 12px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #ff6a00, #ee0979);
-            color: white;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        #message {
-            margin-top: 25px;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-size: 20px;
-            font-weight: bold;
-            background-color: rgba(0,0,0,0.3);
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-
-        #clock {
-            margin-top: 40px;
-            font-size: 24px;
-            font-weight: bold;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-        }
-
-        @keyframes fadeInDown {
-            from {opacity:0; transform: translateY(-30px);}
-            to {opacity:1; transform: translateY(0);}
-        }
-    </style>
+    <!-- Liên kết file CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Chào mừng bạn!</h1>
@@ -95,38 +18,7 @@
     <div id="message"></div>
     <div id="clock"></div>
 
-    <script>
-        // Đồng hồ live
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            document.getElementById("clock").textContent = "Giờ hiện tại: " + timeString;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        // Hiển thị message với animation
-        function showMessage() {
-            const name = document.getElementById("nameInput").value.trim();
-            const color = document.getElementById("colorInput").value;
-            const msgDiv = document.getElementById("message");
-
-            if(!name) {
-                alert("Vui lòng nhập tên!");
-                return;
-            }
-
-            msgDiv.textContent = `Xin chào, ${name}! Chúc bạn một ngày tuyệt vời!`;
-            msgDiv.style.backgroundColor = color;
-            msgDiv.style.opacity = "1";
-            msgDiv.style.transform = "translateY(0)";
-
-            // Tự ẩn sau 5s
-            setTimeout(() => {
-                msgDiv.style.opacity = "0";
-                msgDiv.style.transform = "translateY(-20px)";
-            }, 5000);
-        }
-    </script>
+    <!-- Liên kết file JS -->
+    <script src="script.js"></script>
 </body>
 </html>
