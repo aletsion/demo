@@ -2,61 +2,130 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Mini Demo HTML/CSS/JS</title>
+    <title>Mini Web Interactive Demo</title>
     <style>
+        /* Body & Background */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            text-align: center;
-            padding: 50px;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            color: #fff;
+            overflow-x: hidden;
         }
+
         h1 {
-            color: #1e90ff;
+            margin-top: 50px;
+            font-size: 3em;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
         }
-        p {
-            font-size: 18px;
-            color: #333;
+
+        /* Input & Button */
+        .input-container {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        input {
-            padding: 8px;
+
+        input[type="text"], input[type="color"] {
+            padding: 10px;
             font-size: 16px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #1e90ff;
-            color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff6a00, #ee0979);
+            color: white;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+
         button:hover {
-            background-color: #104e8b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
+
         #message {
-            margin-top: 20px;
+            margin-top: 25px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 20px;
             font-weight: bold;
-            color: green;
+            background-color: rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        #clock {
+            margin-top: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {opacity:0; transform: translateY(-30px);}
+            to {opacity:1; transform: translateY(0);}
         }
     </style>
 </head>
 <body>
-    <h1>Chào mừng bạn đến trang demo!</h1>
-    <p>Nhập tên của bạn và nhấn nút:</p>
-    <input type="text" id="nameInput" placeholder="Nhập tên">
-    <button onclick="sayHello()">Gửi</button>
+    <h1>Chào mừng bạn!</h1>
+
+    <div class="input-container">
+        <input type="text" id="nameInput" placeholder="Nhập tên của bạn">
+        <input type="color" id="colorInput" value="#ff6a00">
+        <button onclick="showMessage()">Gửi</button>
+    </div>
 
     <div id="message"></div>
+    <div id="clock"></div>
 
     <script>
-        function sayHello() {
-            var name = document.getElementById("nameInput").value;
-            if(name.trim() === "") {
+        // Đồng hồ live
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById("clock").textContent = "Giờ hiện tại: " + timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Hiển thị message với animation
+        function showMessage() {
+            const name = document.getElementById("nameInput").value.trim();
+            const color = document.getElementById("colorInput").value;
+            const msgDiv = document.getElementById("message");
+
+            if(!name) {
                 alert("Vui lòng nhập tên!");
                 return;
             }
-            var msgDiv = document.getElementById("message");
-            msgDiv.textContent = "Xin chào, " + name + "! Chúc bạn một ngày tuyệt vời!";
+
+            msgDiv.textContent = `Xin chào, ${name}! Chúc bạn một ngày tuyệt vời!`;
+            msgDiv.style.backgroundColor = color;
+            msgDiv.style.opacity = "1";
+            msgDiv.style.transform = "translateY(0)";
+
+            // Tự ẩn sau 5s
+            setTimeout(() => {
+                msgDiv.style.opacity = "0";
+                msgDiv.style.transform = "translateY(-20px)";
+            }, 5000);
         }
     </script>
 </body>
