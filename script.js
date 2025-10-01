@@ -1,8 +1,8 @@
-// Particles.js config
-particlesJS("particles-js", {
-    "particles": {
-        "number": {"value":70},
-        "color": {"value":"#ffffff"},
+// Particle.js configuration
+particlesJS("particles-js",{
+    "particles":{
+        "number":{"value":80},
+        "color":{"value":"#ffffff"},
         "shape":{"type":"circle"},
         "opacity":{"value":0.5},
         "size":{"value":3},
@@ -13,27 +13,24 @@ particlesJS("particles-js", {
     "retina_detect":true
 });
 
-// Dark/Light toggle
+// Dark/Light theme toggle
 const themeBtn = document.getElementById("themeToggle");
 themeBtn.addEventListener("click",()=>{
     document.body.classList.toggle("light-theme");
-    if(document.body.classList.contains("light-theme")){
-        localStorage.setItem("theme","light");
-    } else { localStorage.setItem("theme","dark"); }
+    localStorage.setItem("theme",document.body.classList.contains("light-theme")?"light":"dark");
 });
-// Load theme
 if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-theme");}
 
-// Copy profile link
+// Copy Portfolio Link
 document.getElementById("copyLink").addEventListener("click",()=>{
     navigator.clipboard.writeText(window.location.href)
-        .then(()=>alert("Link profile đã được copy!"))
+        .then(()=>alert("Portfolio link đã copy!"))
         .catch(()=>alert("Copy thất bại!"));
 });
 
-// Smooth scroll for anchors
+// Smooth scroll for internal anchors
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-    anchor.addEventListener('click', function(e){
+    anchor.addEventListener('click',function(e){
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
     });
