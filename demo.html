@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Demo HTML/CSS/JS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #1e90ff;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #104e8b;
+        }
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chào mừng bạn đến trang demo!</h1>
+    <p>Nhập tên của bạn và nhấn nút:</p>
+    <input type="text" id="nameInput" placeholder="Nhập tên">
+    <button onclick="sayHello()">Gửi</button>
+
+    <div id="message"></div>
+
+    <script>
+        function sayHello() {
+            var name = document.getElementById("nameInput").value;
+            if(name.trim() === "") {
+                alert("Vui lòng nhập tên!");
+                return;
+            }
+            var msgDiv = document.getElementById("message");
+            msgDiv.textContent = "Xin chào, " + name + "! Chúc bạn một ngày tuyệt vời!";
+        }
+    </script>
+</body>
+</html>
